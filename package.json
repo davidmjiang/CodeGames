@@ -1,0 +1,18 @@
+{
+  "name": "boardgamejs",
+  "version": "1.0.0",
+  "description": "Final project for UW Domain Specific Languages Winter 2021",
+  "scripts": {
+    "pretest": "tsc",
+    "test": "mocha --require source-map-support/register"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "4.1.3"
+  },
+  "types": "dist/index.d.ts"
+}
