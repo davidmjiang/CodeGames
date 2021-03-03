@@ -1,4 +1,4 @@
-# BoardGameJS
+# CodeGames
 ## Final project for UW PMP Domain Specific Languages Winter 2021
 ![Settlers](game-340574_640.jpg)
 ## [Proposal](https://docs.google.com/document/d/1GV2r5wCsTPgOj_3APRqeA7JzegAeTDoaa3FoW-ncBpg/edit)  

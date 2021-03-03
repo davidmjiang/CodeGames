@@ -1,0 +1,1 @@
+export type MoveResult = {result: "SUCCESS" | "INVALID" | "GAME_OVER", data: any}
