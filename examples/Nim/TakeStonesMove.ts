@@ -7,13 +7,12 @@ export class TakeStones extends GameMove {
         super("Take stones");
     }
     public onMoveTaken(ctx: Game, numToTake: number): MoveResult {
-        let stonesLeft = ctx.custom.stones;
         if (numToTake == 1) {
-            stonesLeft -= 1;
+            ctx.custom.stones -= 1;
             return MoveResults.SUCCESS;
         }
-        else if (numToTake == 2 && stonesLeft >= 2) {
-            stonesLeft -= 2;
+        else if (numToTake == 2 && ctx.custom.stones >= 2) {
+            ctx.custom.stones -= 2;
             return MoveResults.SUCCESS;
         }
         else {

@@ -15,6 +15,10 @@ export class PlayerManager {
     // track how many times a player has passed in a round
     private passes: number = 0;
 
+    constructor() {
+        this.playerMap = {};
+    }
+
     public hasPlayers(min: number, max: number) {
         this.minPlayers = min;
         this.maxPlayers = max;

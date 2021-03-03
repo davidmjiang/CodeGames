@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Final project for UW Domain Specific Languages Winter 2021",
   "scripts": {
+    "typescript": "tsc",
+    "buildNim": "browserify dist/examples/Nim/Client.js -o dist/examples/Nim/bundle.js",
     "pretest": "tsc",
     "test": "mocha --require source-map-support/register"
   },
@@ -12,7 +14,8 @@
     "chai": "^4.2.0",
     "mocha": "^7.2.0",
     "source-map-support": "^0.5.19",
-    "typescript": "4.1.3"
+    "typescript": "4.1.3",
+    "browserify": "^16.5.0"
   },
   "types": "dist/index.d.ts"
 }

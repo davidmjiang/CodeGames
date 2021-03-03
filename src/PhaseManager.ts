@@ -15,6 +15,10 @@ export class PhaseManager {
     private currentPhase: GamePhase;
     private phases: PhaseMap;
 
+    constructor() {
+        this.phases = {};
+    }
+
     public addPhase(p: GamePhase): boolean {
         return this.addToPhaseMap(p);
     }
@@ -63,6 +67,7 @@ export class PhaseManager {
             // this is the first phase to be added
             this.startPhase = p;
             this.lastPhase = p;
+            this.currentPhase = p;
         }
         else {
             this.phases[this.lastPhase.name].next = p;

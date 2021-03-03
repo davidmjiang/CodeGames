@@ -24,6 +24,7 @@ export class Game {
         this.name = name;
         this.playerManager = new PlayerManager();
         this.phaseManager = new PhaseManager();
+        this.custom = {};
     }
 
     // PLAYERS
@@ -117,22 +118,24 @@ export class Game {
         if (result.result === Result.GAME_OVER) {
             return result;
         }
+        if (this.endIfFn(this)) {
+            // game over. get some final information to show
+            let metadata = this.endIfFn(this);
+            return {
+                result: Result.GAME_OVER,
+                data: metadata
+            };
+        }
         if (result.result === Result.SUCCESS) {
             if (!this.playerManager.advanceCurrentPlayer()) {
                 // no one else can play this round, move on to the next
                 this.roundsComplete++;
                 this.phaseManager.onRoundEnd(this);
-                if (this.endIfFn(this)) {
-                    // game over. get some final information to show
-                    let metadata = this.onGameEndFunc(this);
-                    return {
-                        result: Result.GAME_OVER,
-                        data: metadata
-                    };
+                if (!this.endIfFn(this)) {
+                    // start the next round
+                    this.playerManager.onNewRound();
+                    this.phaseManager.onNewRound(this);
                 }
-                // start the next round
-                this.playerManager.onNewRound();
-                this.phaseManager.onNewRound(this);
             }
         }
         return result;

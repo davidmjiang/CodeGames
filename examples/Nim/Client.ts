@@ -19,16 +19,16 @@ let oneStoneButton = document.getElementById("one-stone");
 let twoStoneButton = document.getElementById("two-stone");
 oneStoneButton.addEventListener("click", () => {
     let result = nimClient.makeMove("Take stones", 1);
+    game.innerText = JSON.stringify(nim.custom);
     if (result.result == Result.GAME_OVER) {
         alert(`${result.data.winner} wins!`);
     }
-    game.innerText = JSON.stringify(nim.custom);
 });
 
 twoStoneButton.addEventListener("click", () => {
     let result = nimClient.makeMove("Take stones", 2);
+    game.innerText = JSON.stringify(nim.custom);
     if (result.result == Result.GAME_OVER) {
         alert(`${result.data.winner} wins!`);
     }
-    game.innerText = JSON.stringify(nim.custom);
 });
