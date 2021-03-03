@@ -2,15 +2,18 @@ import { ContextFunction } from "./ContextFunction";
 import { GameMove } from "./GameMove";
 import { GamePhase } from "./GamePhase";
 import { GamePlayer } from "./GamePlayer";
-import { MoveResult } from "./MoveResult";
+import { MoveResult, Result } from "./MoveResult";
 import { PhaseManager } from "./PhaseManager";
 import { PlayerManager } from "./PlayerManager";
 
 export class Game {
-    name: string;
-    setupFunc: ContextFunction;
-    onGameEndFunc: ContextFunction;
-    endIfFn: ContextFunction;
+    private name: string;
+    private setupFunc: ContextFunction;
+    private onGameEndFunc: ContextFunction;
+    private endIfFn: ContextFunction;
+
+    // users can put their custom fields here
+    public custom: any;
 
     private roundsComplete: number = 0;
 
@@ -84,12 +87,12 @@ export class Game {
         if (this.onGameEndFunc) {
             let metadata = this.onGameEndFunc(this);
             return {
-                result: "GAME_OVER",
+                result: Result.GAME_OVER,
                 data: metadata
             };
         }
         return {
-            result: "GAME_OVER",
+            result: Result.GAME_OVER,
             data: null
         };
     }
@@ -97,6 +100,7 @@ export class Game {
 
     // FOR CLIENT
     public start(): void {
+        // need to check that we have min # of players
         this.setupFunc(this);
         this.playerManager.onNewRound();
         this.phaseManager.onNewRound(this);
@@ -110,10 +114,10 @@ export class Game {
 
     public makeMove(move: string, ...args: any[]): MoveResult {
         let result: MoveResult = this.phaseManager.makeMove(this, move, ...args);
-        if (result.result === "GAME_OVER") {
+        if (result.result === Result.GAME_OVER) {
             return result;
         }
-        if (result.result === "SUCCESS") {
+        if (result.result === Result.SUCCESS) {
             if (!this.playerManager.advanceCurrentPlayer()) {
                 // no one else can play this round, move on to the next
                 this.roundsComplete++;
@@ -122,7 +126,7 @@ export class Game {
                     // game over. get some final information to show
                     let metadata = this.onGameEndFunc(this);
                     return {
-                        result: "GAME_OVER",
+                        result: Result.GAME_OVER,
                         data: metadata
                     };
                 }
