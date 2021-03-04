@@ -12,14 +12,10 @@ nimClient.addPlayer(player1);
 nimClient.addPlayer(player2);
 nimClient.start();
 
-let game = document.getElementById("game");
-game.innerText = JSON.stringify(nim.custom);
-
 let oneStoneButton = document.getElementById("one-stone");
 let twoStoneButton = document.getElementById("two-stone");
 oneStoneButton.addEventListener("click", () => {
     let result = nimClient.makeMove("Take stones", 1);
-    game.innerText = JSON.stringify(nim.custom);
     if (result.result == Result.GAME_OVER) {
         alert(`${result.data.winner} wins!`);
     }
@@ -27,7 +23,6 @@ oneStoneButton.addEventListener("click", () => {
 
 twoStoneButton.addEventListener("click", () => {
     let result = nimClient.makeMove("Take stones", 2);
-    game.innerText = JSON.stringify(nim.custom);
     if (result.result == Result.GAME_OVER) {
         alert(`${result.data.winner} wins!`);
     }

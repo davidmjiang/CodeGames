@@ -12,6 +12,8 @@ export class Game {
     private onGameEndFunc: ContextFunction;
     private endIfFn: ContextFunction;
 
+    private subscribeFuncs = [];
+
     // users can put their custom fields here
     public custom: any;
 
@@ -105,6 +107,7 @@ export class Game {
         this.setupFunc(this);
         this.playerManager.onNewRound();
         this.phaseManager.onNewRound(this);
+        this.updateClient();
     }
 
     public getMoves(): string[] {
@@ -115,6 +118,7 @@ export class Game {
 
     public makeMove(move: string, ...args: any[]): MoveResult {
         let result: MoveResult = this.phaseManager.makeMove(this, move, ...args);
+        this.updateClient();
         if (result.result === Result.GAME_OVER) {
             return result;
         }
@@ -135,9 +139,25 @@ export class Game {
                     // start the next round
                     this.playerManager.onNewRound();
                     this.phaseManager.onNewRound(this);
+                    this.updateClient();
                 }
             }
+            this.updateClient();
         }
         return result;
     };
+
+    public subscribe(cb: ContextFunction) {
+        this.subscribeFuncs.push(cb);
+    }
+
+    private updateClient() {
+        let currentPlayer: string = this.getCurrentPlayer().name;
+        let currentPhase: string = this.getCurrentPhase().name;
+        let custom = this.custom;
+        let newState = {currentPhase, currentPlayer, custom};
+        this.subscribeFuncs.forEach((cb) => {
+            cb(newState);
+        });
+    }
 }
