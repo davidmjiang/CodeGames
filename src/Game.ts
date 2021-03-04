@@ -147,6 +147,13 @@ export class Game {
         return result;
     };
 
+    // you need to provide the current player in custom args for this to work
+    public makeOneTimeMove(move: string, ...args: any[]): MoveResult {
+        let result: MoveResult = this.phaseManager.makeMove(this, move, ...args);
+        this.updateClient();
+        return result;
+    }
+
     public subscribe(cb: ContextFunction) {
         this.subscribeFuncs.push(cb);
     }
