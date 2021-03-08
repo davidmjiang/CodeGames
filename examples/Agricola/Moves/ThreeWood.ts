@@ -22,6 +22,6 @@ export class ThreeWood extends AgricolaMove {
         let currentPlayer = ctx.getCurrentPlayer() as AgricolaPlayer;
         currentPlayer.wood += this.wood;
         this.wood = 0;
-        super.onMoveTaken(ctx);
+        return super.onMoveTaken(ctx);
     }
 }

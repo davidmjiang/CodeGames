@@ -22,6 +22,6 @@ export class OneReed extends AgricolaMove {
         let currentPlayer = ctx.getCurrentPlayer() as AgricolaPlayer;
         currentPlayer.reed += this.reed;
         this.reed = 0;
-        super.onMoveTaken(ctx);
+        return super.onMoveTaken(ctx);
     }
 }

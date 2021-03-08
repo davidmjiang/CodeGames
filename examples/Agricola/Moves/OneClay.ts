@@ -22,6 +22,6 @@ export class OneClay extends AgricolaMove {
         let currentPlayer = ctx.getCurrentPlayer() as AgricolaPlayer;
         currentPlayer.clay += this.clay;
         this.clay = 0;
-        super.onMoveTaken(ctx);
+        return super.onMoveTaken(ctx);
     }
 }

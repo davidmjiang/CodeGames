@@ -14,6 +14,6 @@ export class OneGrain extends AgricolaMove {
         }
         let currentPlayer = ctx.getCurrentPlayer() as AgricolaPlayer;
         currentPlayer.grain += 1;
-        super.onMoveTaken(ctx);
+        return super.onMoveTaken(ctx);
     }
 }

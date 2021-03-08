@@ -3,16 +3,9 @@ import { MoveResult, MoveResults } from "../../../src/MoveResult";
 import { AgricolaPlayer } from "../AgricolaPlayer";
 import { AgricolaMove } from "./AgricolaMove";
 
-export class Fishing extends AgricolaMove {
-    public food: number;
-
+export class StartingPlayer extends AgricolaMove {
     constructor() {
-        super("Fishing");
-        this.food = 0;
-    }
-
-    onTurnStart(ctx: GameContext) {
-        this.food += 1;
+        super("Starting Player");
     }
 
     onMoveTaken(ctx: GameContext, ...args: any[]): MoveResult {
@@ -20,8 +13,8 @@ export class Fishing extends AgricolaMove {
             return MoveResults.INVALID;
         }
         let currentPlayer = ctx.getCurrentPlayer() as AgricolaPlayer;
-        currentPlayer.clay += this.food;
-        this.food = 0;
+        currentPlayer.food += 1;
+        ctx.setStartPlayer(currentPlayer);
         return super.onMoveTaken(ctx);
     }
 }

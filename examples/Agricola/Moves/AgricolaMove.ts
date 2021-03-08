@@ -1,5 +1,6 @@
 import { GameContext } from "../../../src/GameContext";
 import { GameMove } from "../../../src/GameMove";
+import { MoveResults } from "../../../src/MoveResult";
 
 export class AgricolaMove extends GameMove {
     public moveTaken: boolean;
@@ -14,6 +15,6 @@ export class AgricolaMove extends GameMove {
 
     onMoveTaken(ctx: GameContext) {
         this.moveTaken = true;
-        return null;
+        return MoveResults.SUCCESS;
     }
 }
