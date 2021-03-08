@@ -1,4 +1,5 @@
 import { GamePlayer } from "../../src/GamePlayer";
+import { Farmyard } from "./Farmyard";
 
 export class AgricolaPlayer extends GamePlayer {
     // building materials
@@ -12,4 +13,7 @@ export class AgricolaPlayer extends GamePlayer {
     public grain: number;
     public vegetables: number;
     public familyMembers: number;
+
+    // board
+    public farmyard: Farmyard;
 }
