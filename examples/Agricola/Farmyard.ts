@@ -17,12 +17,14 @@ export class Farmyard {
     private MAX_STABLES = 4;
     private fences: number;
     private MAX_FENCES = 15;
+    private currentHouse: Room;
 
     constructor() {
         this.initializeSpaces();
         this.initializeBorders();
         this.stables = 0;
         this.fences = 0;
+        this.currentHouse = Room.Wood;
     }
 
     public plow(space: number): boolean {
@@ -40,6 +42,9 @@ export class Farmyard {
         if (spaceToStable.room || spaceToStable.field) {
             return false;
         }
+        if (this.stables === this.MAX_STABLES) {
+            return false;
+        }
         spaceToStable.stables += 1;
         spaceToStable.filled = true;
         return true;
@@ -50,6 +55,9 @@ export class Farmyard {
         if (spaceToRoom.filled) {
             return false;
         }
+        if (roomType != this.currentHouse) {
+            return false;
+        }
         spaceToRoom.room = roomType;
         spaceToRoom.filled = true;
         return true;
@@ -57,12 +65,14 @@ export class Farmyard {
 
     // there are 34 unique possible borders. presence of a fence is represented by true, empty border by false
     private initializeBorders() {
+        this.borders = [];
         for (let i = 0; i < this.NUM_BORDERS; i++) {
             this.borders.push(false);
         }
     }
 
     private initializeSpaces() {
+        this.spaces = [];
         for (let i = 0; i < 15; i++) {
             if (this.isStartingHouseSpace(i)) {
                 this.spaces[i] = new FarmyardSpace(Room.Wood);

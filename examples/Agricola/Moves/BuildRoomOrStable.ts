@@ -7,6 +7,7 @@ import { AgricolaMove } from "./AgricolaMove";
 export class BuildRoomOrStable extends AgricolaMove {
     constructor() {
         super("Build Room Or Stable");
+        this.customArgs = 3;
     }
 
     // args

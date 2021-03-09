@@ -7,6 +7,7 @@ export class AgricolaMove extends GameMove {
 
     constructor(name: string) {
         super(name);
+        this.moveTaken = false;
     }
 
     onTurnStart(ctx: GameContext) {

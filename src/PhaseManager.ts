@@ -53,6 +53,7 @@ export class PhaseManager {
         let moves: GameMove[] = this.currentPhase.getMoves();
         let move: GameMove = moves.find(m => m.name === moveName);
         let result = move.onMoveTaken(ctx, ...args);
+        ctx.getCurrentPlayer().onMoveTaken();
         // to-do: broadcast the move
         return result;
     }

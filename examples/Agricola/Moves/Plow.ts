@@ -6,6 +6,7 @@ import { AgricolaMove } from "./AgricolaMove";
 export class Plow extends AgricolaMove {
     constructor() {
         super("Plow");
+        this.customArgs = 1;
     }
 
     // args

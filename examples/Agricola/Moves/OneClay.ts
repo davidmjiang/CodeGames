@@ -13,6 +13,7 @@ export class OneClay extends AgricolaMove {
 
     onTurnStart(ctx: GameContext) {
         this.clay += 1;
+        super.onTurnStart(ctx);
     }
 
     onMoveTaken(ctx: GameContext, ...args: any[]): MoveResult {

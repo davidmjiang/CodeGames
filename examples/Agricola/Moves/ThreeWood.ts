@@ -13,6 +13,7 @@ export class ThreeWood extends AgricolaMove {
 
     onTurnStart(ctx: GameContext) {
         this.wood += 3;
+        super.onTurnStart(ctx);
     }
 
     onMoveTaken(ctx: GameContext, ...args: any[]): MoveResult {

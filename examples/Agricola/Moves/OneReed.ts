@@ -13,6 +13,7 @@ export class OneReed extends AgricolaMove {
 
     onTurnStart(ctx: GameContext) {
         this.reed += 1;
+        super.onTurnStart(ctx);
     }
 
     onMoveTaken(ctx: GameContext, ...args: any[]): MoveResult {

@@ -4,6 +4,7 @@ import { MoveResult } from "./MoveResult";
 export abstract class GameMove {
     name: string;
     shouldBroadcast: boolean = false;
+    customArgs: number = 0;
 
     constructor(name: string) {
         this.name = name;

@@ -5,6 +5,7 @@
   "scripts": {
     "typescript": "tsc",
     "buildNim": "browserify dist/examples/Nim/Client.js -o dist/examples/Nim/bundle.js",
+    "buildAgricola": "browserify dist/examples/Agricola/Client.js -o dist/examples/Agricola/bundle.js",
     "pretest": "tsc",
     "test": "mocha --require source-map-support/register"
   },

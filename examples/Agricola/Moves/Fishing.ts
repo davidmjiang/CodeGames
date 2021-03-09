@@ -13,6 +13,7 @@ export class Fishing extends AgricolaMove {
 
     onTurnStart(ctx: GameContext) {
         this.food += 1;
+        super.onTurnStart(ctx);
     }
 
     onMoveTaken(ctx: GameContext, ...args: any[]): MoveResult {
@@ -20,7 +21,7 @@ export class Fishing extends AgricolaMove {
             return MoveResults.INVALID;
         }
         let currentPlayer = ctx.getCurrentPlayer() as AgricolaPlayer;
-        currentPlayer.clay += this.food;
+        currentPlayer.food += this.food;
         this.food = 0;
         return super.onMoveTaken(ctx);
     }

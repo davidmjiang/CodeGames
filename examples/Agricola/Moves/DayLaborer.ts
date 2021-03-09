@@ -7,6 +7,7 @@ import { AgricolaMove } from "./AgricolaMove";
 export class DayLaborer extends AgricolaMove {
     constructor() {
         super("Day Laborer");
+        this.customArgs = 1;
     }
 
     // args 

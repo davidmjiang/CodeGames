@@ -110,10 +110,10 @@ export class Game {
         this.updateClient();
     }
 
-    public getMoves(): string[] {
+    public getMoves(): GameMove[] {
         let currentPhase: GamePhase = this.phaseManager.getCurrentPhase();
         let moves: GameMove[] = currentPhase.getMoves();
-        return moves.map(m => m.name);
+        return moves;
     }
 
     public makeMove(move: string, ...args: any[]): MoveResult {
@@ -162,7 +162,7 @@ export class Game {
         let currentPlayer: string = this.getCurrentPlayer().name;
         let currentPhase: string = this.getCurrentPhase().name;
         let custom = this.custom;
-        let newState = {currentPhase, currentPlayer, custom};
+        let newState = {currentPhase, currentPlayer, custom, players: this.getPlayers()};
         this.subscribeFuncs.forEach((cb) => {
             cb(newState);
         });

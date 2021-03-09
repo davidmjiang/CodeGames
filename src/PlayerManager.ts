@@ -51,14 +51,14 @@ export class PlayerManager {
     // call every turn
     public advanceCurrentPlayer(): boolean {
         this.currentPlayer = this.playerMap[this.currentPlayer.name].next;
-        if (this.currentPlayer.canTakeMove) {
+        if (this.currentPlayer.canTakeMove()) {
             return true;
         }
-        while (this.passes < this.numPlayers && this.currentPlayer.canTakeMove) {
+        while (this.passes < this.numPlayers && this.currentPlayer.canTakeMove()) {
             this.currentPlayer = this.playerMap[this.currentPlayer.name].next;
             this.passes++;
         }
-        if (this.currentPlayer.canTakeMove) {
+        if (this.currentPlayer.canTakeMove()) {
             this.passes = 0;
             return true;
         }
@@ -76,6 +76,10 @@ export class PlayerManager {
     public onNewRound(): void {
         this.currentPlayer = this.startPlayer;
         this.passes = 0;
+        let players = this.getPlayers();
+        players.forEach(p => {
+            p.onTurnStart();
+        });
     }
 
     private addToPlayerMap(p: GamePlayer): boolean {
