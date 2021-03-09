@@ -55,7 +55,7 @@ export class GameClient {
         gameState.style.display = "inline-block";
         gameState.style.verticalAlign = "top";
         debugPanel.appendChild(gameState);
-        gameState.innerText= JSON.stringify(state, ["currentPhase", "currentPlayer"], 2);
+        gameState.innerText= JSON.stringify(state, ["currentPhase", "currentPlayer", "turn"], 2);
         // player 1
         let player1 = document.createElement("div");
         debugPanel.appendChild(player1);

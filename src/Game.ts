@@ -162,7 +162,7 @@ export class Game {
         let currentPlayer: string = this.getCurrentPlayer().name;
         let currentPhase: string = this.getCurrentPhase().name;
         let custom = this.custom;
-        let newState = {currentPhase, currentPlayer, custom, players: this.getPlayers()};
+        let newState = {currentPhase, currentPlayer, turn: this.roundsComplete, custom, players: this.getPlayers()};
         this.subscribeFuncs.forEach((cb) => {
             cb(newState);
         });
