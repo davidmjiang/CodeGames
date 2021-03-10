@@ -99,3 +99,15 @@ The library provides a debug view so you can test out your game before making an
     </pre>
 ````
 </details>
+
+## Examples
+This repo includes example games in the examples folder. To try them out, first compile the typescript:
+````
+npm run typescript
+````
+Then build the game you're interested in.
+````
+npm run buildNim
+npm run buildAgricola
+````
+Open the index.html file in the examples\\{gamename} folder.
