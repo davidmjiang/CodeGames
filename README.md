@@ -5,6 +5,7 @@
 CodeGames is a Typescript library to help make board games in the browser. Use it to define the rules of your game and we'll handle keeping the game state up-to-date.
 ## [Proposal](https://docs.google.com/document/d/1GV2r5wCsTPgOj_3APRqeA7JzegAeTDoaa3FoW-ncBpg/edit)  
 ## [Design Document](https://docs.google.com/document/d/17f2Ny1IawnVOAPdgZp6RzV-M-mB4pg23ZUP8Hmj_LJE/edit?usp=sharing)
+## [Final Report](https://docs.google.com/document/d/1qWkwa9WDcIi1cXgqH-YwoBytbJHhh3ng0kmSdX4NZlE/edit?usp=sharing)
 ## [Poster](https://drive.google.com/file/d/1fvimcJ37YoAVz3Cokm352s_m3ailQcdx/view?usp=sharing)
 ## [Demo](Demo.mp4)
 
