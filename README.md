@@ -57,7 +57,7 @@ class MyPhase extends GamePhase {
 }
 ````
 
-We have now covered the main building blocks for a game and we're reading to put everything together:
+We have now covered the main building blocks for a game and we're ready to put everything together:
 ``` 
 Game g = new Game("CodeGames"); // give it a name
 g.hasPlayers(2,4) // define the min and max number of players 
@@ -73,7 +73,7 @@ g.onGameEnd((ctx) => ...); // callback called when the game ends.
 
 ## Playing a game
 <details><summary><b>Show instructions</b></summary>
-Now that the game is defined, you're ready to play. Create a new ````GameClient````, passing in the name of the game. Add your players and start.
+Now that the game is defined, you're ready to play. Create a new <b>GameClient</b>, passing in the name of the game. Add your players and start.
 
 ````
 GameClient cg = new GameClient("CodeGames");
@@ -85,14 +85,16 @@ At this point, the game is ready to receive moves.
 
 ````
 let moves = cg.moves; // get a list of moves
-cg.makeMove("MyMove"); // make a move. If the move takes parameters, you can pass them in here after the name.
+cg.makeMove("MyMove"); // make a move. 
+// If the move takes parameters, you can pass them in here after the name.
 ````
 
 The library provides a debug view so you can test out your game before making any UI. In your html file, provide the following markup:
 
 ````
     <div id="moves">
-        <!-- we will put here a button for each available move. clicking the button will trigger the move -->
+        <!-- we will put here a button for each available move. 
+        clicking the button will trigger the move -->
     </div>
     <pre id="debug">
         <!-- we will put here the game state -->
